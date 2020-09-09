@@ -1,0 +1,25 @@
+<style>
+    .divider {
+        height: 14px;
+        width: 100%;
+        background-color: {{ section.settings.color }};
+    }
+</style>
+
+<div class="divider"></div>
+
+{% schema %}
+    {
+        "name": {
+            "en": "divider"
+        },
+        "settings": [
+            {
+                "type": "color",
+                "id": "color",
+                "default": "#FFFFFF",
+                "label": "Divider color"
+            }
+        ]
+    }
+{% endschema %}

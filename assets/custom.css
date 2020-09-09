@@ -5,3 +5,27 @@ Please add any custom CSS code in here, it will be easier to transfer if updatin
 We highly recommend labelling changes, or App installs, so these can also be updated or removed as needed.
 
 */
+.custom-hero-inner {
+    display: flex;
+    flex-direction: row;
+	position: relative;
+    vertical-align: middle;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+    padding-top: 5%;
+}
+
+.custom-hero-logo {
+    height: 100%;
+    width: 40%;
+    padding: 5% 10% 5% 5%;
+}
+
+.custom-hero-texts {
+    height: 100%;
+    width: 55%;
+    padding: 15% 5% 10% 10%;
+    text-align: center;
+}
