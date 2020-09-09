@@ -29,3 +29,48 @@ We highly recommend labelling changes, or App installs, so these can also be upd
     padding: 15% 5% 10% 10%;
     text-align: center;
 }
+
+.homepage-sections-wrapper.custom-no-padding {
+    padding: 0;
+}
+
+.container.custom-no-padding.custom-no-margin {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.mosaic-collection {
+    height: 77vh;
+    width: 100vw;
+    display: flex;
+}
+
+.mosaic-col {
+    height: 100%;
+    width: 50%;
+    border: 1px red solid;
+}
+
+.custom-flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.mosaic-quarter {
+    height: 50%;
+    width: 100%;
+    border: 1px red solid;
+}
+
+.mosaic-half-quarter {
+    height: 100%;
+    width: 50%;
+    border: 1px red solid;
+}
