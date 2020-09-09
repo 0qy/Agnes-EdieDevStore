@@ -47,7 +47,7 @@
                     <div class="custom-hero-inner wow fadeInUp ">
                         <div class="custom-hero-texts">
                             {% if section.settings.title != blank or section.settings.subheading != blank %}
-                                <div class="title-bar custom-font">
+                                <div class="title-bar custom-font custom-title-left">
                                 {% if section.settings.subheading != blank %}
                                 <h3 class="type-subheading type-subheading--1 {% if section.settings.title != blank %} typography--padding-bottom{% endif %}">{{ section.settings.subheading | escape }}</h3>
                                 {% endif %}
@@ -82,13 +82,7 @@
 
 {% schema %}
 {
-    "name": {
-        "en": "Image with text overlay",
-        "de": "Bild mit Textüberlagerung",
-        "es": "Imagen con texto superpuesto",
-        "fr": "Image avec texte superposé",
-        "pt-PT": "Imagem com sobreposição de texto"
-    },
+    "name": "Imge Hero with Logo",
     "class": "homepage-section--text-over-image-wrapper",
     "settings": [
         {
@@ -367,13 +361,7 @@
     ],
     "presets": [
         {
-            "name": {
-                "en": "Image with text overlay",
-                "de": "Bild mit Textüberlagerung",
-                "es": "Imagen con texto superpuesto",
-                "fr": "Image avec texte superposé",
-                "pt-PT": "Imagem com sobreposição de texto"
-            },
+            "name": "Image Hero with Logo",
             "category": {
                 "en": "Image",
                 "de": "Bild",
