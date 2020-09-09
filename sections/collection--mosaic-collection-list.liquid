@@ -1,3 +1,21 @@
+
+<style>
+  {% render 'responsive-background-image' with section.settings.image_1, selector: '.collection-1', scale: 1 %}
+  {% render 'responsive-background-image' with section.settings.image_2, selector: '.collection-2', scale: 1 %}
+  {% render 'responsive-background-image' with section.settings.image_3, selector: '.collection-3', scale: 1 %}
+  {% render 'responsive-background-image' with section.settings.image_4, selector: '.collection-4', scale: 1 %}
+
+  .mosaic-half-quarter, .mosaic-quarter, .mosaic-col  {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+
+
 {% case section.settings.colors %}
   {% when 'white' %}
     <div class="homepage-sections-wrapper custom-no-padding  homepage-sections-wrapper--white">
@@ -11,15 +29,29 @@
 
   <div class="custom-no-padding custom-no-margin container">
     <div class="mosaic-collection">
-      <div class="mosaic-col">
+      <div class="mosaic-col collection-1">
+        <div>
+          <a href="{{ section.settings.button_link_1 }}" class="btn btn-custom">
+              {{ section.settings.button_1 }}
+          </a>
+       </div>
       </div>
       <div class="mosaic-col custom-flex-col">
-        <div class="mosaic-quarter">
+        <div class="mosaic-quarter collection-2">
+          <a href="{{ section.settings.button_link_2 }}" class="btn btn-custom">
+              {{ section.settings.button_2 }}
+          </a>
         </div>
         <div class="custom-flex-row mosaic-quarter">
-          <div class="mosaic-half-quarter">
+          <div class="mosaic-half-quarter collection-3">
+            <a href="{{ section.settings.button_link_3 }}" class="btn btn-custom">
+              {{ section.settings.button_3 }}
+            </a>
           </div>
-          <div class="mosaic-half-quarter">
+          <div class="mosaic-half-quarter collection-4">
+            <a href="{{ section.settings.button_link_4 }}" class="btn btn-custom">
+              {{ section.settings.button_4 }}
+            </a>
           </div>
         </div>
       </div>
@@ -91,6 +123,11 @@
       "label": "Collection 1 Image"
     },
     {
+      "type": "url",
+      "id": "button_link_1",
+      "label": "Button link 1"
+    },
+    {
       "type": "text",
       "id": "button_1",
       "label": "Collection 1 Button"
@@ -104,6 +141,11 @@
       "type": "image_picker",
       "id": "image_2",
       "label": "Collection 2 Image"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Button link 2"
     },
     {
       "type": "text",
@@ -121,6 +163,11 @@
       "label": "Collection 3 Image"
     },
     {
+      "type": "url",
+      "id": "button_link_3",
+      "label": "Button link 3"
+    },
+    {
       "type": "text",
       "id": "button_3",
       "label": "Collection 3 Button"
@@ -134,6 +181,11 @@
       "type": "image_picker",
       "id": "image_4",
       "label": "Collection 4 Image"
+    },
+    {
+      "type": "url",
+      "id": "button_link_4",
+      "label": "Button link 4"
     },
     {
       "type": "text",
