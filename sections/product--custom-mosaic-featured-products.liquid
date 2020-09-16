@@ -1,0 +1,63 @@
+<div class="mosaic-products-container">
+    <div class="mosaic-products-col1">
+        <div class="mosaic-products-row2">
+            <div class="mosaic-products-col2">test</div>
+            <div class="mosaic-products-col2">test</div>
+        </div>
+        <div class="mosaic-products-row1">test</div>
+    </div>
+    <div class="mosaic-products-col1">
+        <div class="mosaic-products-row1">test</div>        
+        <div class="mosaic-products-row2">
+            <div class="mosaic-products-col2">test</div>
+            <div class="mosaic-products-col2">test</div>
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+{
+    "name": "Mosaic Featured Products",
+    "class": "custom-mosaic-featured-products",
+    "settings": [
+        {
+            "type": "product",
+            "id": "product_1",
+            "label": "product_1"
+        },
+        {
+            "type": "product",
+            "id": "product_2",
+            "label": "product_2"
+        },
+        {
+            "type": "product",
+            "id": "product_3",
+            "label": "product_3"
+        },
+        {
+            "type": "product",
+            "id": "product_4",
+            "label": "product_4"
+        },
+        {
+            "type": "product",
+            "id" : "product_5",
+            "label": "product_5"
+        },
+        {
+            "type": "product",
+            "id": "product_6",
+            "label": "product_6"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Mosaic Featured Products",
+            "category": "Product"
+        }
+    ]
+}
+
+{% endschema %}
