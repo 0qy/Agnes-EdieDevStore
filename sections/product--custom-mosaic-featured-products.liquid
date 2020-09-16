@@ -1,16 +1,37 @@
+{%- assign product1 = all_products[section.settings.product_1] -%}
+{%- assign product2 = all_products[section.settings.product_2] -%}
+{%- assign product3 = all_products[section.settings.product_3] -%}
+{%- assign product4 = all_products[section.settings.product_4] -%}
+{%- assign product5 = all_products[section.settings.product_5] -%}
+{%- assign product6 = all_products[section.settings.product_6] -%}
+
+<style>
+    {% render 'responsive-background-image' with product1.featured_image, selector:".product1", scale: 1 %}
+    {% render 'responsive-background-image' with product2.featured_image, selector:".product2", scale: 1 %}
+    {% render 'responsive-background-image' with product3.featured_image, selector:".product3", scale: 1 %}
+    {% render 'responsive-background-image' with product4.featured_image, selector:".product4", scale: 1 %}
+    {% render 'responsive-background-image' with product5.featured_image, selector:".product5", scale: 1 %}
+    {% render 'responsive-background-image' with product6.featured_image, selector:".product6", scale: 1 %}
+</style>
+
 <div class="mosaic-products-container">
-    <div class="mosaic-products-col1">
+    <div class="mosaic-products-col1"> 
         <div class="mosaic-products-row2">
-            <div class="mosaic-products-col2">test</div>
-            <div class="mosaic-products-col2">test</div>
+            <div class="mosaic-products-col2 product1">
+                <div class="mosaic-hover-description">
+                    <p>hlwekjlkjfsflaskjdflkajdfasdf</p>
+                </div>
+            </div>
+            <div class="mosaic-products-col2 product2">testwhatever
+            </div>
         </div>
-        <div class="mosaic-products-row1">test</div>
+        <div class="mosaic-products-row1 product3">tests</div>
     </div>
     <div class="mosaic-products-col1">
-        <div class="mosaic-products-row1">test</div>        
+        <div class="mosaic-products-row1 product4">tests</div>        
         <div class="mosaic-products-row2">
-            <div class="mosaic-products-col2">test</div>
-            <div class="mosaic-products-col2">test</div>
+            <div class="mosaic-products-col2 product5">tests</div>
+            <div class="mosaic-products-col2 product6">tests</div>
         </div>
     </div>
 </div>
