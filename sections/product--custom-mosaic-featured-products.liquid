@@ -14,24 +14,61 @@
     {% render 'responsive-background-image' with product6.featured_image, selector:".product6", scale: 1 %}
 </style>
 
-<div class="mosaic-products-container">
+<div class="mosaic-products-container homepage-sections-wrapper homepage-sections-wrapper--light">
     <div class="mosaic-products-col1"> 
         <div class="mosaic-products-row2">
             <div class="mosaic-products-col2 product1">
-                <div class="mosaic-hover-description">
-                    <p>hlwekjlkjfsflaskjdflkajdfasdf</p>
-                </div>
+                <a href = {{product1.url}}>
+                    <div class="mosaic-hover-description">
+                        <h4>{{product1.title}}</h4>
+                        <h4>{{product1.price | money }}</h4>
+                    </div>
+                </a>
             </div>
-            <div class="mosaic-products-col2 product2">testwhatever
+            <div class="mosaic-products-col2 product2">
+                <a href = {{product2.url}}>
+                    <div class="mosaic-hover-description">
+                        <h4>{{product2.title}}</h4>
+                        <h4>{{product2.price | money }}</h4>
+                    </div>
+                </a>
             </div>
         </div>
-        <div class="mosaic-products-row1 product3">tests</div>
+        <div class="mosaic-products-row1 product3">
+            <a href = {{product3.url}}>
+                <div class="mosaic-hover-description">
+                    <h4>{{product3.title}}</h4>
+                    <h4>{{product3.price | money }}</h4>
+                </div>
+            </a>
+        </div>
     </div>
     <div class="mosaic-products-col1">
-        <div class="mosaic-products-row1 product4">tests</div>        
+        <div class="mosaic-products-row1 product4">
+            <div class="mosaic-hover-description">
+                <a href = {{product4.url}}>
+                    <h4>{{product4.title}}</h4>
+                    <h4>{{product4.price | money }}</h4>
+                </a>
+            </div>
+        </div>        
         <div class="mosaic-products-row2">
-            <div class="mosaic-products-col2 product5">tests</div>
-            <div class="mosaic-products-col2 product6">tests</div>
+            <div class="mosaic-products-col2 product5">
+                <a href={{product5.url}}>
+                    <div class="mosaic-hover-description">
+                        <h4>{{product5.title}}</h4>
+                        <h4>{{product5.price | money }}</h4>
+                    </div>
+                </a>    
+            </div>
+            <div class="mosaic-products-col2 product6">
+                <a href = {{product6.url}}>
+                    <div class="mosaic-hover-description">
+                        <h4>{{product6.title}}</h4>
+                        <h4>{{product6.price | money }}</h4>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
