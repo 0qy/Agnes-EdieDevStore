@@ -60,31 +60,37 @@ body {
     height: 77vh;
     width: 100vw;
     display: flex;
+    background-position: 50% 50%;
 }
 
 .mosaic-col {
     height: 100%;
     width: 50%;
+    background-position: 50% 50%;
 }
 
 .custom-flex-col {
     display: flex;
     flex-direction: column;
+    background-position: 50% 50%;
 }
 
 .custom-flex-row {
     display: flex;
     flex-direction: row;
+    background-position: 50% 50%;
 }
 
 .mosaic-quarter {
     height: 50%;
     width: 100%;
+    background-position: 50% 50%;
 }
 
 .mosaic-half-quarter {
     height: 100%;
     width: 50%;
+    background-position: 50% 50%;
 }
 
 .custom-featured-product-inner {
@@ -109,6 +115,7 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
+
 }
 
 .mosaic-products-row1 {
@@ -145,4 +152,45 @@ body {
 
 .mosaic-hover-description:hover {
     opacity: 100%;
+}
+
+.mosaic-hover-description:focus {
+    opacity: 100%;
+}
+
+@media screen and (max-width:640px){
+    .custom-hero-inner {
+        flex-direction: column-reverse;
+        padding: 10px;
+    }
+
+    .custom-hero-texts {
+        width: 100%;
+        padding: 5% 5% 5% 5%;
+    }
+
+    .custom-hero-logo {
+        width: 80%;
+        padding: 17% 1% 1% 1%;
+    }
+
+    .mosaic-products-container {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .mosaic-products-col1 {
+        width: 100%;
+    }
+
+    .mosaic-collection {
+        flex-direction: column;
+        height: 90vh;
+    }
+    
+    .mosaic-col {
+        width: 100%;
+        flex-direction: column-reverse;
+    }
+
 }
