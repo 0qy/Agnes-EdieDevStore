@@ -56,6 +56,14 @@ body {
     margin: 0;
 }
 
+.custom-no-margin {
+    margin: 0;
+}
+
+.custom-full-width {
+    width: 100%;
+}
+
 .mosaic-collection {
     height: 77vh;
     width: 100vw;
@@ -148,6 +156,11 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 3%;
+}
+
+.mosaic-hover-description h4{
+    text-align: center;
 }
 
 .mosaic-hover-description:hover {
@@ -190,6 +203,9 @@ body {
     padding: 1.5%;
 }
 
+.custom-large-padding {
+    padding: 6%;
+}
 
 @media screen and (max-width:640px){
     .custom-hero-inner {
