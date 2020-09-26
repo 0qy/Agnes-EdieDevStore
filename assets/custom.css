@@ -190,9 +190,10 @@ body {
     text-align: center;
     color: #FD2A06;
     margin: 0;
-    background-color: rgba(255,255,255,0.4);
+    background-color: rgba(255,242,238, .7);;
     font-size: 55px;
     line-height: 30vh;
+    text-transform: capitalize;
 }
 
 .custom-grid-padding {
@@ -205,6 +206,20 @@ body {
 
 .custom-large-padding {
     padding: 6%;
+}
+
+@media screen 
+    and (orientation: portrait)
+    and (min-device-width: 768px) 
+    and (max-device-width: 1024px)  {
+    .mosaic-collection {
+        height: 45vh;
+    }
+
+    .mosaic-products-container {
+        height: 65vh;
+    }
+
 }
 
 @media screen and (max-width:640px){
@@ -260,5 +275,7 @@ body {
         line-height: 65px;
         padding: 10% 3%;
     }
+
+    
 
 }
