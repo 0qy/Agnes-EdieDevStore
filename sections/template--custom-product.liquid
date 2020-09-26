@@ -140,11 +140,11 @@
 </div>
 {% endcapture %}
 
-<div class="row media-size-{{ section.settings.image_size }} custom-full-width" id="product-box" data-section-id="{{ section.id }}" data-wetheme-section-type="template--product" data-wetheme-section-id="{{ section.id }}">
+<div class="row media-size-{{ section.settings.image_size }} custom-full-width-flex custom-no-margin" id="product-box" data-section-id="{{ section.id }}" data-wetheme-section-type="template--product" data-wetheme-section-id="{{ section.id }}">
   {% if section.settings.thumbnail_position == 'left' %}
     {{ thumbnails }}
   {% endif %}
-  <div class="product-medias{% if section.settings.thumbnail_position != 'below' and product.media.size > 1 %} col-sm-12 col-md-{{ product_image_width | minus: 2 }}{% else %} col-md-{{ product_image_width }}{% endif %}">
+  <div class="custom-half-col">
     <input type="hidden" id="thumbnail_changes_variant" value="{% if section.settings.thumbnail_changes_variant %}true{% else %}false{% endif %}" />
 
     {% if settings.sale_badge %}
@@ -208,8 +208,8 @@
     </div>
   {% endcapture %}
   
-    <div class="col-sm-12 {{ product_description_width }}">
-      <section class="entry-content product-description-main-wrapper{% unless section.settings.show_variant_labels %} hide-variant-labels{% endunless %}{% if settings.show_swatches %} variant-swatches-enabled{% else %} variant-dropdown-enabled{% endif %}">
+    <div class="custom-half-col">
+      <section class="custom-product-inner entry-content product-description-main-wrapper{% unless section.settings.show_variant_labels %} hide-variant-labels{% endunless %}{% if settings.show_swatches %} variant-swatches-enabled{% else %} variant-dropdown-enabled{% endif %}">
         {% if settings.show_vendor or settings.show_SKU %}
           <div class="row product-vendor-sku">
             {% if settings.show_vendor %}
