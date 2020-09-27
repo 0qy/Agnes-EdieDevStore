@@ -25,16 +25,17 @@
 {% endcase %}
 
   <div class="custom-side-by-side-featured-collection">
-    <div class="custom-side-by-side-inner"
-          {%if section.settings.reversed == "yes"%}
-          style="flex-direction: row-reverse;"
-          {% endif %}>
+    {%if section.settings.reversed =="yes"%}
+      <div class="custom-side-by-side-inner-reversed">
+    {% else %}
+      <div class="custom-side-by-side-inner">
+    {%endif%}
       <div class="custom-half-col shopify-section--{{section.id}} custom-collection-image">
       </div>
       <div class="custom-half-col">
         <div class="custom-side-by-side-text-wrapper">
-          <h2>{{section.settings.heading}}<h2>
-          <h4>{{section.settings.subheading}}</h4>
+          <h4>{{section.settings.heading}}<h2>
+          <h5>{{section.settings.subheading}}</h4>
           <p>{{section.settings.text}}<p>
           <a href="{{ section.settings.button_link }}" class="btn btn-custom">
             {{ section.settings.button }}
