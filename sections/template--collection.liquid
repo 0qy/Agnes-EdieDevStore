@@ -29,22 +29,24 @@
 
 <div data-section-id="{{ section.id }}" data-section-type="collection-template">
 
+
 <div id="collections-main" class="{{ collection.handle }}">
 
-<div class="title-bar custom-font collection-header{% if collection.image and section.settings.collection_image_enable %} collection-header--with-image{% endif %}">
-	{% if collection.handle == 'all' %}
-		<h2>{{ 'products.general.products_title' | t }}</h2>
-	{% else %}
-		<h2>{{ collection.title }}</h2>
-	{% endif %}
-	<div class="clear"></div>
-</div>
+    <div class="title-bar custom-font collection-header{% if collection.image and section.settings.collection_image_enable %} collection-header--with-image{% endif %}">
+        {% if collection.handle == 'all' %}
+            <h2>{{ 'products.general.products_title' | t }}</h2>
+        {% else %}
+            <h2>{{ collection.title }}</h2>
+        {% endif %}
+        <div class="clear"></div>
+    </div>
 
 	{% if collection.description != empty %}
 		<div class="description-content">{{ collection.description }}</div>
 	{% endif %}
 </div>
 
+<div class="custom-max-width">
 {% if section.settings.tags_enable or section.settings.sort_enable %}
 			<div class="filters-toolbar row">
 				{% if section.settings.tags_enable %}
@@ -322,6 +324,11 @@
 
   	</div>
 	</div>
+
+
+
+
+</div>
 </div>
 
 {% endpaginate %}

@@ -44,7 +44,7 @@
                     <div class="description-content">{{ collection.description }}</div>
                 {% endif %}
             </div>
-
+            <div class="custom-max-width">
             {% if section.settings.tags_enable or section.settings.sort_enable %}
                 <div class="filters-toolbar row custom-small-padding">
                     {% if section.settings.tags_enable %}
@@ -101,200 +101,201 @@
                 </div>
             {% endif %}
 
-            <div class="page-width row" id="Collection">
-                {% if section.settings.enable_collection_sidebar %}
-                    {% if section.blocks.size > 0 %}
-                        <div class="col-md-3" id="collection-sidebar">
-                            {% for block in section.blocks %}
-                                {% case block.type %}
-                                    {% when 'vendors' %}
-                                        <div class="collection-sidebar--section" {{ block.shopify_attributes }}>
-                                            <h2>{{ block.settings.title }}</h2>
-                                            <svg class="chevron-right global-transition" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                                            <ul>
-                                                {% for product_vendor in shop.vendors %}
-                                                {% assign its_a_match = false %}
-                                                {% capture my_collection_handle %} {{ product_vendor | handleize | strip | escape  }} {% endcapture %}
-                                                {% assign my_collection_handle_stripped = my_collection_handle | strip | escape %}
-
-                                                {% for collection in collections %}
-                                                {% if my_collection_handle_stripped == collection.handle %}
-                                                {% assign its_a_match = true %}
-                                                {% endif %}
-                                                {% endfor %}
-
-                                                {% if its_a_match %}
-                                                <li class="vendor-list-item"><a href="{{ routes.collections_url }}/{{ product_vendor | handleize }}">{{ product_vendor }}</a></li>
-                                                {% else %}
-                                                <li class="vendor-list-item">{{ product_vendor | link_to_vendor }}</li>
-                                                {% endif %}
-                                                {% endfor %}
-                                            </ul>
-                                        </div>
-                                    {% when 'text' %}
-                                        <div class="collection-sidebar--section" {{ block.shopify_attributes }}>
-                                            <h2>{{ block.settings.title }}</h2>
-                                            {% if block.settings.richtext != blank %}
-                                                <svg class="chevron-right global-transition" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                                                <div class="colletion--sidebar--text--richtext">
-                                                    {{ block.settings.richtext }}
-                                                </div>
-                                            {% endif %}
-                                        </div>
-                                    {% when 'menu' %}
-                                        {%- assign collection_linklist = block.settings.collection_linklist -%}
-                                        <div class="collection-sidebar--section" {{ block.shopify_attributes }}>
-                                            <h2>{{ block.settings.menu_title | escape }}</h2>
-                                            {% if linklists[collection_linklist].links.size > 0 %}
+                <div class="page-width row" id="Collection">
+                    {% if section.settings.enable_collection_sidebar %}
+                        {% if section.blocks.size > 0 %}
+                            <div class="col-md-3" id="collection-sidebar">
+                                {% for block in section.blocks %}
+                                    {% case block.type %}
+                                        {% when 'vendors' %}
+                                            <div class="collection-sidebar--section" {{ block.shopify_attributes }}>
+                                                <h2>{{ block.settings.title }}</h2>
                                                 <svg class="chevron-right global-transition" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
                                                 <ul>
-                                                    {% for link in linklists[collection_linklist].links %}
-                                                        <li class="collection-menu--list-item{% if link.object.tags and link.object.tags.size > 0 %} children{% endif %}">
-                                                            <a href="{{link.url}}">{{link.title}}</a>
-                                                        </li>
+                                                    {% for product_vendor in shop.vendors %}
+                                                    {% assign its_a_match = false %}
+                                                    {% capture my_collection_handle %} {{ product_vendor | handleize | strip | escape  }} {% endcapture %}
+                                                    {% assign my_collection_handle_stripped = my_collection_handle | strip | escape %}
+
+                                                    {% for collection in collections %}
+                                                    {% if my_collection_handle_stripped == collection.handle %}
+                                                    {% assign its_a_match = true %}
+                                                    {% endif %}
+                                                    {% endfor %}
+
+                                                    {% if its_a_match %}
+                                                    <li class="vendor-list-item"><a href="{{ routes.collections_url }}/{{ product_vendor | handleize }}">{{ product_vendor }}</a></li>
+                                                    {% else %}
+                                                    <li class="vendor-list-item">{{ product_vendor | link_to_vendor }}</li>
+                                                    {% endif %}
                                                     {% endfor %}
                                                 </ul>
-                                            {% endif %}
-                                        </div>
-                                    {% when 'image' %}
-                                        {% if block.settings.collection-sidebar-image %}
+                                            </div>
+                                        {% when 'text' %}
                                             <div class="collection-sidebar--section" {{ block.shopify_attributes }}>
-                                                {% if block.settings.collection-sidebar-link %}
-                                                    <a href="{{ block.settings.collection-sidebar-link }}" itemprop="url">
-                                                {% endif %}
-                                                <div>
-                                                    {% assign alt = block.settings.collection-sidebar-image.alt | default: shop.name %}
-                                                    {% render 'responsive-image' with block.settings.collection-sidebar-image, alt: alt %}
-                                                </div>
-                                                {% if block.settings.collection-sidebar-link %}
-                                                    </a>
+                                                <h2>{{ block.settings.title }}</h2>
+                                                {% if block.settings.richtext != blank %}
+                                                    <svg class="chevron-right global-transition" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                                    <div class="colletion--sidebar--text--richtext">
+                                                        {{ block.settings.richtext }}
+                                                    </div>
                                                 {% endif %}
                                             </div>
-                                        {% endif %}
-                                {% endcase %}
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                {% endif %}
-
-                {% if section.settings.enable_collection_sidebar and section.blocks.size > 0 %}
-                    <div class="col-md-9">
-                {% else %}
-                    <div class="col-md-12">
-                {% endif %}
-
-                {% case section.settings.grid %}
-                    {% when 2 %}
-                        {%- assign grid_item_width = 'col-6 col-sm-6 col-md-6 two_columns' -%}
-                        {%- assign grid_image_width = '600x600' -%}
-                    {% when 3 %}
-                        {%- assign grid_item_width = 'col-6 col-sm-4 col-md-4 three_columns' -%}
-                        {%- assign grid_image_width = '600x600' -%}
-                    {% when 4 %}
-                        {%- assign grid_item_width = 'col-6 col-sm-6 col-md-3 four_columns' -%}
-                        {%- assign grid_image_width = '600x600' -%}
-                                {% when 5 %}
-                                {%- assign grid_item_width = 'col-6 col-sm-6 col-md-2dot4 five_columns' -%}
-                        {%- assign grid_image_width = '600x600' -%}
-                                {% when 6 %}
-                        {%- assign grid_item_width = 'col-6 col-sm-4 col-md-2 six_columns' -%}
-                        {%- assign grid_image_width = '600x600' -%}
-                {% endcase %}
-
-                <div id="AjaxinateContainer" class="custom-small-padding row product-grid clearfix {% if settings.match-height %}products--match-height{% endif %}">
-                    {% for product in collection.products %}
-                    <div class="custom-grid-padding grid__item {{ grid_item_width }} indiv-product-wrapper collection-image-anim
-                                    {% case section.settings.grid %}
-                                        {% when 2 %}
-                                            {% cycle 'mobileCycle': ' alpha mobile-clear tablet-clear', ' omega' %}
-                                            wow fadeInUp {% cycle 'animDelay': '', 'delay-1' %}
-                                        {% when 3 %}
-                                            {% cycle 'mobileCycle': ' alpha mobile-clear', '', ' mobile-clear omega', 'alpha', ' mobile-clear', ' omega' %}
-                                            wow fadeInUp {% cycle 'animDelay': '', 'delay-1', 'delay-2' %}
-                                        {% when 4 %}
-                                            {% cycle 'mobileCycle': ' alpha mobile-clear tablet-clear', '', ' mobile-clear tablet-clear', ' omega' %}
-                                            wow fadeInUp {% cycle 'animDelay': '', 'delay-1', 'delay-2', 'delay-3' %}
-                                        {% when 5 %}
-                                            {% cycle 'mobileCycle': ' alpha mobile-clear tablet-clear', '', ' mobile-clear tablet-clear', '', ' omega mobile-clear tablet-clear', ' alpha', ' mobile-clear tablet-clear', '', ' mobile-clear tablet-clear', ' omega' %}
-                                            wow fadeInUp {% cycle 'animDelay': '', 'delay-1', 'delay-2', 'delay-3', 'delay-4' %}
-                                        {% when 6 %}
-                                            {% cycle 'mobileCycle': ' alpha mobile-clear tablet-clear', '', ' mobile-clear', ' tablet-clear', ' mobile-clear', ' omega' %}
-                                            wow fadeInUp {% cycle 'animDelay': '', 'delay-1', 'delay-2', 'delay-3', 'delay-4', 'delay-5' %}
+                                        {% when 'menu' %}
+                                            {%- assign collection_linklist = block.settings.collection_linklist -%}
+                                            <div class="collection-sidebar--section" {{ block.shopify_attributes }}>
+                                                <h2>{{ block.settings.menu_title | escape }}</h2>
+                                                {% if linklists[collection_linklist].links.size > 0 %}
+                                                    <svg class="chevron-right global-transition" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                                    <ul>
+                                                        {% for link in linklists[collection_linklist].links %}
+                                                            <li class="collection-menu--list-item{% if link.object.tags and link.object.tags.size > 0 %} children{% endif %}">
+                                                                <a href="{{link.url}}">{{link.title}}</a>
+                                                            </li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            </div>
+                                        {% when 'image' %}
+                                            {% if block.settings.collection-sidebar-image %}
+                                                <div class="collection-sidebar--section" {{ block.shopify_attributes }}>
+                                                    {% if block.settings.collection-sidebar-link %}
+                                                        <a href="{{ block.settings.collection-sidebar-link }}" itemprop="url">
+                                                    {% endif %}
+                                                    <div>
+                                                        {% assign alt = block.settings.collection-sidebar-image.alt | default: shop.name %}
+                                                        {% render 'responsive-image' with block.settings.collection-sidebar-image, alt: alt %}
+                                                    </div>
+                                                    {% if block.settings.collection-sidebar-link %}
+                                                        </a>
+                                                    {% endif %}
+                                                </div>
+                                            {% endif %}
                                     {% endcase %}
-                    ">
-
-                                {%-
-                                    include 'product-grid--indiv-product',
-                                    liquidObject: product
-                                -%}
-
+                                {% endfor %}
                             </div>
+                        {% endif %}
+                    {% endif %}
 
+                    {% if section.settings.enable_collection_sidebar and section.blocks.size > 0 %}
+                        <div class="col-md-9">
                     {% else %}
-                    {% comment %}
-                    Add default products to help with onboarding for collections/all only.
+                        <div class="col-md-12">
+                    {% endif %}
 
-                    The onboarding styles and products are only loaded if the
-                    store has no products.
-                    {% endcomment %}
-                    {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
+                    {% case section.settings.grid %}
+                        {% when 2 %}
+                            {%- assign grid_item_width = 'col-6 col-sm-6 col-md-6 two_columns' -%}
+                            {%- assign grid_image_width = '600x600' -%}
+                        {% when 3 %}
+                            {%- assign grid_item_width = 'col-6 col-sm-4 col-md-4 three_columns' -%}
+                            {%- assign grid_image_width = '600x600' -%}
+                        {% when 4 %}
+                            {%- assign grid_item_width = 'col-6 col-sm-6 col-md-3 four_columns' -%}
+                            {%- assign grid_image_width = '600x600' -%}
+                                    {% when 5 %}
+                                    {%- assign grid_item_width = 'col-6 col-sm-6 col-md-2dot4 five_columns' -%}
+                            {%- assign grid_image_width = '600x600' -%}
+                                    {% when 6 %}
+                            {%- assign grid_item_width = 'col-6 col-sm-4 col-md-2 six_columns' -%}
+                            {%- assign grid_image_width = '600x600' -%}
+                    {% endcase %}
 
-                        {% for i in (1..8) %}
-
-                        <div class="grid__item {{ grid_item_width }} indiv-product-wrapper
-
-                        {% case section.settings.grid %}
-                                        {% when 2 %}
-                                            {% cycle 'alpha', 'omega' %}
-                            {% when 3 %}
-                                {% cycle ' alpha', '', ' omega' %}
-                            {% when 4 %}
-                                {% cycle ' alpha', '', '', ' omega' %}
-                                        {% when 5 %}
-                                {% cycle ' alpha', '', '', '', ' omega' %}
-                                        {% when 6 %}
-                                {% cycle ' alpha', '', '', '', '', ' omega' %}
-                                    {% endcase %}
-
+                    <div id="AjaxinateContainer" class="custom-small-padding row product-grid clearfix {% if settings.match-height %}products--match-height{% endif %}">
+                        {% for product in collection.products %}
+                        <div class="custom-grid-padding grid__item {{ grid_item_width }} indiv-product-wrapper collection-image-anim
+                                        {% case section.settings.grid %}
+                                            {% when 2 %}
+                                                {% cycle 'mobileCycle': ' alpha mobile-clear tablet-clear', ' omega' %}
+                                                wow fadeInUp {% cycle 'animDelay': '', 'delay-1' %}
+                                            {% when 3 %}
+                                                {% cycle 'mobileCycle': ' alpha mobile-clear', '', ' mobile-clear omega', 'alpha', ' mobile-clear', ' omega' %}
+                                                wow fadeInUp {% cycle 'animDelay': '', 'delay-1', 'delay-2' %}
+                                            {% when 4 %}
+                                                {% cycle 'mobileCycle': ' alpha mobile-clear tablet-clear', '', ' mobile-clear tablet-clear', ' omega' %}
+                                                wow fadeInUp {% cycle 'animDelay': '', 'delay-1', 'delay-2', 'delay-3' %}
+                                            {% when 5 %}
+                                                {% cycle 'mobileCycle': ' alpha mobile-clear tablet-clear', '', ' mobile-clear tablet-clear', '', ' omega mobile-clear tablet-clear', ' alpha', ' mobile-clear tablet-clear', '', ' mobile-clear tablet-clear', ' omega' %}
+                                                wow fadeInUp {% cycle 'animDelay': '', 'delay-1', 'delay-2', 'delay-3', 'delay-4' %}
+                                            {% when 6 %}
+                                                {% cycle 'mobileCycle': ' alpha mobile-clear tablet-clear', '', ' mobile-clear', ' tablet-clear', ' mobile-clear', ' omega' %}
+                                                wow fadeInUp {% cycle 'animDelay': '', 'delay-1', 'delay-2', 'delay-3', 'delay-4', 'delay-5' %}
+                                        {% endcase %}
                         ">
 
-                                        {% render 'product-grid--onboarding' %}
+                                    {%-
+                                        include 'product-grid--indiv-product',
+                                        liquidObject: product
+                                    -%}
 
-                        </div>  ```
+                                </div>
+
+                        {% else %}
+                        {% comment %}
+                        Add default products to help with onboarding for collections/all only.
+
+                        The onboarding styles and products are only loaded if the
+                        store has no products.
+                        {% endcomment %}
+                        {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
+
+                            {% for i in (1..8) %}
+
+                            <div class="grid__item {{ grid_item_width }} indiv-product-wrapper
+
+                            {% case section.settings.grid %}
+                                            {% when 2 %}
+                                                {% cycle 'alpha', 'omega' %}
+                                {% when 3 %}
+                                    {% cycle ' alpha', '', ' omega' %}
+                                {% when 4 %}
+                                    {% cycle ' alpha', '', '', ' omega' %}
+                                            {% when 5 %}
+                                    {% cycle ' alpha', '', '', '', ' omega' %}
+                                            {% when 6 %}
+                                    {% cycle ' alpha', '', '', '', '', ' omega' %}
+                                        {% endcase %}
+
+                            ">
+
+                                            {% render 'product-grid--onboarding' %}
+
+                            </div>  ```
+                            {% endfor %}
+
+                        {% else %}
+                            {%- assign is_empty_collection = true -%}
+                        {% endif %}
                         {% endfor %}
+                    </div>
 
-                    {% else %}
-                        {%- assign is_empty_collection = true -%}
+                    {% if is_empty_collection %}
+                        <div class="grid__item small--text-center">
+                            <p class="text-center">{{ 'collections.general.no_matches' | t }}</p>
+                        </div>
                     {% endif %}
-                    {% endfor %}
-                </div>
 
-                {% if is_empty_collection %}
-                    <div class="grid__item small--text-center">
-                        <p class="text-center">{{ 'collections.general.no_matches' | t }}</p>
-                    </div>
-                {% endif %}
-
-                {% if paginate.pages > 1 %}
-                <div class="row justify-content-center">
-                    {% if section.settings.pagination_type == 'paged_navigation' %}
-                    {% render 'pagination', paginate: paginate  %}
-                    {% elsif section.settings.pagination_type == 'infinite_scrolling' %}
-                    <div id="AjaxinateInfiniteScrolling">
-                        {% if paginate.next %}
-                        <a href="{{ paginate.next.url }}">{{ 'collections.paginate.infinite_scrolling' | t }}</a>
-                        {% endif %}
-                    </div>
-                    {% else %}
-                    <div id="AjaxinateLoadMore">
-                        {% if paginate.next %}
-                        <a class="btn" href="{{ paginate.next.url }}">{{ 'collections.paginate.load_more' | t }}</a>
+                    {% if paginate.pages > 1 %}
+                    <div class="row justify-content-center">
+                        {% if section.settings.pagination_type == 'paged_navigation' %}
+                        {% render 'pagination', paginate: paginate  %}
+                        {% elsif section.settings.pagination_type == 'infinite_scrolling' %}
+                        <div id="AjaxinateInfiniteScrolling">
+                            {% if paginate.next %}
+                            <a href="{{ paginate.next.url }}">{{ 'collections.paginate.infinite_scrolling' | t }}</a>
+                            {% endif %}
+                        </div>
+                        {% else %}
+                        <div id="AjaxinateLoadMore">
+                            {% if paginate.next %}
+                            <a class="btn" href="{{ paginate.next.url }}">{{ 'collections.paginate.load_more' | t }}</a>
+                            {% endif %}
+                        </div>
                         {% endif %}
                     </div>
                     {% endif %}
-                </div>
-                {% endif %}
 
+                    </div>
                 </div>
             </div>
     {% endpaginate %}

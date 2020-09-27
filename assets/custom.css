@@ -285,6 +285,11 @@ body {
     align-items: center;
 }
 
+.custom-max-width {
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
 @media screen 
     and (orientation: portrait)
     and (min-device-width: 768px) 
