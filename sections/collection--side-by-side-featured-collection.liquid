@@ -1,0 +1,153 @@
+{% capture selector %}.shopify-section--{{ section.id }}.custom-collection-image{% endcapture %}
+<style>
+  {% render 'responsive-background-image' with section.settings.image, selector: selector, scale: 1 %}
+  .custom-collection-image {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(0);
+  }
+</style>
+
+
+{% case section.settings.colors %}
+  {% when 'white' %}
+    <div class="homepage-sections-wrapper custom-no-padding  homepage-sections-wrapper--white">
+  {% when 'light' %}
+    <div class="homepage-sections-wrapper custom-no-padding  homepage-sections-wrapper--light">
+  {% when 'accent' %}
+    <div class="homepage-sections-wrapper  custom-no-padding homepage-sections-wrapper--accent">
+  {% when 'dark' %}
+    <div class="homepage-sections-wrapper custom-no-padding homepage-sections-wrapper--dark">
+{% endcase %}
+
+  <div class="custom-side-by-side-featured-collection">
+    <div class="custom-side-by-side-inner"
+          {%if section.settings.reversed == "yes"%}
+          style="flex-direction: row-reverse;"
+          {% endif %}>
+      <div class="custom-half-col shopify-section--{{section.id}} custom-collection-image">
+      </div>
+      <div class="custom-half-col">
+        <div class="custom-side-by-side-text-wrapper">
+          <h2>{{section.settings.heading}}<h2>
+          <h4>{{section.settings.subheading}}</h4>
+          <p>{{section.settings.text}}<p>
+          <a href="{{ section.settings.button_link }}" class="btn btn-custom">
+            {{ section.settings.button }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% schema %}
+{
+  "name": "Side by Side Collection",
+  "class": "homepage-section--featured-collections-wrapper wow fadeIn",
+  "settings": [
+    {
+      "type": "select",
+      "id": "colors",
+      "label": "Color scheme",
+      "default": "white",
+      "options": [
+        {
+          "value": "white",
+          "label": {
+              "en": "White",
+              "de": "Weiß",
+              "es": "Blanco",
+              "fr": "Blanc",
+              "pt-PT": "Branco"
+          }
+        },
+        {
+          "value": "light",
+          "label": {
+              "en": "Light",
+              "de": "Licht",
+              "es": "Luz",
+              "fr": "Clair",
+              "pt-PT": "Claro"
+          }
+        },
+        {
+          "value": "accent",
+          "label": {
+              "en": "Feature",
+              "de": "Eigenschaft",
+              "es": "Destacado",
+              "fr": "Caractéristique",
+              "pt-PT": "Funcionalidade"
+          }
+        },
+        {
+          "value": "dark",
+          "label": {
+              "en": "Dark",
+              "de": "Dunkel",
+              "es": "Oscuro",
+              "fr": "Foncé",
+              "pt-PT": "Escuro"
+          }
+        }
+      ]
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Collection Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "heading"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label":"Sub Heading"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "text,"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "button",
+      "label": "Collection Button"
+    },
+    {
+      "type": "radio",
+      "id": "reversed",
+      "label": "Is Reversed",
+      "options": [
+        {"value": "no", "label": "no"},
+        {"value": "yes", "label": "yes"}
+      ],
+      "default": "no"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Side By Side Collection",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}
